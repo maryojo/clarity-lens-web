@@ -8,7 +8,7 @@ import { Check, Eye, Globe, Lock, Cloud, Settings, BookOpen, Share2, Sparkles } 
 export default function ClarityLensOnboarding() {
   const [step, setStep] = useState(1);
   const [readingLevel, setReadingLevel] = useState('middle_school');
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState<string | null>('en');
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -274,8 +274,8 @@ const handleComplete = () => {
           <div className="flex gap-3">
             <select 
               className="flex-1 h-12 px-4 border-2 border-gray-300 rounded-lg text-base focus:border-blue-600 focus:outline-none"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
+              value={language ?? ''}
+              onChange={(e) => setLanguage(e.target.value || null)}
             >
               <option value="en">English</option>
               <option value="es">Spanish</option>
