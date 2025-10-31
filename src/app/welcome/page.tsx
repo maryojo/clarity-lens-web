@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Check, Eye, Globe, Lock, Cloud, Settings, BookOpen, Share2, Sparkles } from 'lucide-react';
+import { ChalkboardSimpleIcon, NotebookIcon, SealQuestionIcon } from '@phosphor-icons/react';
 
 export default function ClarityLensOnboarding() {
   const [step, setStep] = useState(1);
@@ -16,10 +17,10 @@ export default function ClarityLensOnboarding() {
   const progress = (step / totalSteps) * 100;
 
   const levels = [
-    { id: 'elementary', label: 'Elementary', grade: 'Grades 1-5', icon: '📚' },
-    { id: 'middle_school', label: 'Middle School', grade: 'Grades 6-8', icon: '📖' },
-    { id: 'high_school', label: 'High School', grade: 'Grades 9-12', icon: '📝' },
-    { id: 'college', label: 'College+', grade: 'Grade 13+', icon: '🎓' }
+    { id: 'elementary', label: 'Elementary', grade: 'Grades 1-5', icon: '📚', example: 'You can get money from the trust.' },
+    { id: 'middle_school', label: 'Middle School', grade: 'Grades 6-8', icon: '📖', example: 'You are allowed to receive payments from the trust account.' },
+    { id: 'high_school', label: 'High School', grade: 'Grades 9-12', icon: '📝', example: 'You may receive distributions from the trust based on the terms outlined.' },
+    { id: 'college', label: 'College+', grade: 'Grade 13+', icon: '🎓', example: 'The beneficiary shall be entitled to receive distributions from the trust corpus.' }
   ];
 
 const handleComplete = () => {
@@ -37,7 +38,7 @@ const handleComplete = () => {
         }
       }
     },
-    '*' // later restrict to your domain
+    '*' // later restrict to domain
   );
 
   setShowConfetti(true);
@@ -49,8 +50,8 @@ const handleComplete = () => {
   // Step 1: Welcome
   const WelcomeStep = () => (
     <div className="text-center space-y-8">
-      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 mb-4">
-        <Eye className="w-10 h-10 text-blue-600" />
+      <div className="flex items-center w-full h-20">
+        <img src="/logo.png" alt="Welcome to ClarityLens" className="w-48 mx-auto" />
       </div>
       
       <div className="space-y-4">
@@ -63,34 +64,34 @@ const handleComplete = () => {
       </div>
 
       <Card className="max-w-md mx-auto bg-gradient-to-br from-blue-50 to-purple-50 border-2">
-        <CardContent className="pt-6">
+        <CardContent className="pt-1">
           <div className="space-y-4 text-left">
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
-                <BookOpen className="w-4 h-4" />
+              <div className="w-10 h-10 rounded-full bg-[#46c9bd] text-black flex items-center justify-center flex-shrink-0 mt-0.5">
+                <NotebookIcon size={20} weight="fill" />
               </div>
               <div>
-                <p className="font-medium text-gray-900">Reading complex documents</p>
+                <p className="font-medium text-gray-900">Reading complex web content</p>
                 <p className="text-sm text-gray-600">Tax forms, legal papers, medical info</p>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Globe className="w-4 h-4" />
+              <div className="w-10 h-10 rounded-full bg-[#46c9bd] text-black flex items-center justify-center flex-shrink-0 mt-0.5">
+                <SealQuestionIcon size={20} weight="fill" />
               </div>
               <div>
-                <p className="font-medium text-gray-900">Understanding other languages</p>
-                <p className="text-sm text-gray-600">Translate and simplify together</p>
+                <p className="font-medium text-gray-900">Understand every part of a web page</p>
+                <p className="text-sm text-gray-600">The forms, required info and just enough info</p>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Sparkles className="w-4 h-4" />
+              <div className="w-10 h-10 rounded-full bg-[#46c9bd] text-black flex items-center justify-center flex-shrink-0 mt-0.5">
+                <ChalkboardSimpleIcon size={20} weight="fill" />
               </div>
               <div>
-                <p className="font-medium text-gray-900">Learning at your own pace</p>
+                <p className="font-medium text-gray-900">Learning at your own level</p>
                 <p className="text-sm text-gray-600">Choose your perfect reading level</p>
               </div>
             </div>
@@ -102,14 +103,14 @@ const handleComplete = () => {
         <Button 
           size="lg" 
           onClick={() => setStep(2)}
-          className="h-14 px-8 text-lg"
+          className="h-14 px-8 text-lg font-medium"
         >
           Let's Get Started
         </Button>
         <Button 
           size="lg" 
           variant="outline"
-          className="h-14 px-8 text-lg"
+          className="h-14 px-8 text-lg font-medium"
         >
           Watch Demo
         </Button>
@@ -121,8 +122,8 @@ const handleComplete = () => {
   const PermissionsStep = () => (
     <div className="space-y-6">
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-2">
-          <Lock className="w-8 h-8 text-blue-600" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#6bd4ca] mb-2">
+          <Lock className="w-8 h-8 text-black" />
         </div>
         <h2 className="text-3xl font-bold text-gray-900">
           ClarityLens Needs Your Permission
@@ -133,10 +134,10 @@ const handleComplete = () => {
       </div>
 
       <div className="space-y-3 max-w-lg mx-auto">
-        <Card className="border-2 border-blue-200 bg-blue-50">
+        <Card className="border-2 ">
           <CardContent className="pt-6">
             <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-lg bg-[#0e2826] flex items-center justify-center flex-shrink-0">
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
@@ -144,9 +145,6 @@ const handleComplete = () => {
                 <p className="text-sm text-gray-700 mb-2">
                   <strong>Why:</strong> To simplify it for you
                 </p>
-                <span className="inline-block px-2 py-1 bg-blue-600 text-white text-xs rounded-full">
-                  Required
-                </span>
               </div>
             </div>
           </CardContent>
@@ -155,17 +153,14 @@ const handleComplete = () => {
         <Card className="border-2">
           <CardContent className="pt-6">
             <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-gray-600 flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-lg bg-[#0e2826] flex items-center justify-center flex-shrink-0">
                 <Cloud className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-gray-900 mb-1">Save to your library</h3>
+                <h3 className="font-semibold text-gray-900 mb-1">Store your personal information</h3>
                 <p className="text-sm text-gray-600 mb-2">
-                  <strong>Why:</strong> Access on any device
+                  <strong>Why:</strong> Give you a personalized experience
                 </p>
-                <span className="inline-block px-2 py-1 bg-gray-200 text-gray-700 text-xs rounded-full">
-                  Optional
-                </span>
               </div>
             </div>
           </CardContent>
@@ -173,13 +168,13 @@ const handleComplete = () => {
       </div>
 
       <Card className="max-w-lg mx-auto bg-gray-50">
-        <CardContent className="pt-6">
+        <CardContent className="pt-3">
           <div className="flex gap-3">
-            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-              <Lock className="w-5 h-5 text-green-600" />
+            <div className="w-10 h-10 rounded-full bg-[#0e2826] flex items-center justify-center flex-shrink-0">
+              <Lock className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">🔒 Your Privacy</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">About Your Privacy</h3>
               <ul className="space-y-1 text-sm text-gray-700">
                 <li>✓ We process everything locally</li>
                 <li>✓ We don't track your browsing</li>
@@ -202,16 +197,13 @@ const handleComplete = () => {
         >
           {permissionGranted ? (
             <>
-              <Check className="mr-2 h-5 w-5" /> Access Granted
+              <Check className="mr-2 h-5 w-5" /> Proceed
             </>
           ) : (
-            'Grant Access'
+            'Proceed'
           )}
         </Button>
         <div>
-          <a href="#" className="text-sm text-blue-600 hover:underline">
-            Learn more about privacy
-          </a>
         </div>
       </div>
     </div>
@@ -221,8 +213,8 @@ const handleComplete = () => {
   const PreferencesStep = () => (
     <div className="space-y-8">
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 mb-2">
-          <Settings className="w-8 h-8 text-purple-600" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#0e2826] mb-2">
+          <Settings className="w-8 h-8 text-black" />
         </div>
         <h2 className="text-3xl font-bold text-gray-900">
           Let's Personalize ClarityLens
@@ -254,6 +246,7 @@ const handleComplete = () => {
                     {level.label}
                   </h3>
                   <p className="text-sm text-gray-600">{level.grade}</p>
+                  <p className="text-sm text-gray-600">E.g: {level.example}</p>
                   {readingLevel === level.id && (
                     <div className="mt-3">
                       <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-600 text-white text-xs rounded-full">
@@ -267,40 +260,13 @@ const handleComplete = () => {
           </div>
         </div>
 
-        <div>
-          <label className="block text-lg font-semibold text-gray-900 mb-4">
-            Do you need translation?
-          </label>
-          <div className="flex gap-3">
-            <select 
-              className="flex-1 h-12 px-4 border-2 border-gray-300 rounded-lg text-base focus:border-blue-600 focus:outline-none"
-              value={language ?? ''}
-              onChange={(e) => setLanguage(e.target.value || null)}
-            >
-              <option value="en">English</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="zh">Chinese</option>
-              <option value="ar">Arabic</option>
-            </select>
-            <Button 
-              variant="outline" 
-              onClick={() => setLanguage(null)}
-              className="h-12"
-            >
-              Skip this
-            </Button>
-          </div>
-        </div>
-
-        <Card className="bg-amber-50 border-amber-200">
+        {/* <Card className="bg-amber-50 border-amber-200">
           <CardContent className="pt-4">
             <p className="text-sm text-gray-700 text-center">
               💡 Don't worry, you can change these anytime in settings
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
 
       <div className="flex gap-3 justify-center">
@@ -353,10 +319,50 @@ const handleComplete = () => {
               <div className="text-4xl">👆</div>
               <div>
                 <p className="font-semibold text-gray-900 mb-1">
-                  Click the ClarityLens icon in your browser toolbar
+                  Click the Extensions icon in your browser toolbar
                 </p>
                 <p className="text-sm text-gray-600">
                   (Look at the top right corner of your browser)
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="max-w-2xl mx-auto">
+        <Card className="bg-blue-50 border-2 border-blue-200">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-4">
+              <div className="text-4xl">
+                📌
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900 mb-1">
+                  Pin the ClarityLens icon from the extensions list
+                </p>
+                <p className="text-sm text-gray-600">
+                  (Look through the list to find ClarityLens)
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+            <div className="max-w-2xl mx-auto">
+        <Card className="bg-blue-50 border-2 border-blue-200">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-4">
+              <div className="text-4xl">
+                🔍
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900 mb-1">
+                  Click on the ClarityLens icon to simplify the text
+                </p>
+                <p className="text-sm text-gray-600">
+                  (Highlight the sample text first and click the icon)
                 </p>
               </div>
             </div>
@@ -370,7 +376,7 @@ const handleComplete = () => {
           onClick={() => setStep(5)}
           className="h-14 px-12 text-lg"
         >
-          Simulate Extension Click →
+          I have tried it!
         </Button>
       </div>
     </div>
@@ -392,73 +398,27 @@ const handleComplete = () => {
 
         <div className="text-center space-y-2">
           <h2 className="text-3xl font-bold text-gray-900">
-            Amazing! Look! 🎉
+            Amazing! Look!
           </h2>
           <p className="text-gray-600 text-lg">
             Much easier to read now
           </p>
         </div>
 
-        <Card className="max-w-2xl mx-auto border-2 border-green-200 bg-green-50">
-          <CardHeader className="bg-green-100">
-            <CardTitle className="text-sm text-green-700">Simplified Version:</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-base leading-relaxed text-gray-900">
-              The person mentioned above (we'll call them "the beneficiary") can receive money from the trust. But first, the trustee needs to check the rules in Section 12.3(b) of the Trust Agreement. The trustee can decide not to give money if they think it's not good for the beneficiary or the trust.
-            </p>
-          </CardContent>
-        </Card>
-
         <div className="max-w-2xl mx-auto grid gap-3">
           <div className="flex items-center gap-3 bg-white p-4 rounded-lg border-2 border-gray-200">
             <Check className="w-6 h-6 text-green-600 flex-shrink-0" />
-            <span className="text-gray-900 font-medium">Saved to your library</span>
+            <span className="text-gray-900 font-medium">Works on all webpages</span>
           </div>
           <div className="flex items-center gap-3 bg-white p-4 rounded-lg border-2 border-gray-200">
             <Check className="w-6 h-6 text-green-600 flex-shrink-0" />
-            <span className="text-gray-900 font-medium">Available on all devices</span>
+            <span className="text-gray-900 font-medium">Your information is for you alone</span>
           </div>
           <div className="flex items-center gap-3 bg-white p-4 rounded-lg border-2 border-gray-200">
             <Check className="w-6 h-6 text-green-600 flex-shrink-0" />
-            <span className="text-gray-900 font-medium">You can share it with others</span>
+            <span className="text-gray-900 font-medium">Your preferences are used everywhere</span>
           </div>
         </div>
-
-        <Card className="max-w-2xl mx-auto bg-gray-50">
-          <CardHeader>
-            <CardTitle>Quick Tips</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex gap-3">
-              <BookOpen className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Your Library</h3>
-                <p className="text-sm text-gray-600">
-                  Access saved pages anytime at clarity.app/library
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Settings className="w-5 h-5 text-purple-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Change Reading Level</h3>
-                <p className="text-sm text-gray-600">
-                  Try different levels to find what works best
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Share2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Share with Others</h3>
-                <p className="text-sm text-gray-600">
-                  Help family and friends understand too
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         <div className="flex gap-3 justify-center">
           <Button 
@@ -467,13 +427,6 @@ const handleComplete = () => {
             className="h-14 px-12 text-lg"
           >
             Start Using ClarityLens
-          </Button>
-          <Button 
-            size="lg"
-            variant="outline"
-            className="h-14 px-8 text-lg"
-          >
-            Visit My Library
           </Button>
         </div>
       </div>
